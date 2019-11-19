@@ -1,13 +1,37 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createAppContainer } from 'react-navigation';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Supongo q esta es la caratula :,v</Text>
-    </View>
-  );
+class HomeScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Home!</Text>
+      </View>
+    );
+  }
 }
+
+class SettingsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Settings!</Text>
+      </View>
+    );
+  }
+}
+
+// createBottomTabNavigator(RouteConfigs, TabNavigatorConfig);
+const TabNavigator = createBottomTabNavigator({
+  Home: { screen: HomeScreen },
+  Settings: { screen: SettingsScreen },
+});
+
+export default createAppContainer(TabNavigator);
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -20,7 +44,8 @@ const styles = StyleSheet.create({
   lightPurple:{backgroundColor: '#8b56bf'},
   orangeText:{ color: '#ff7043'},
   text:{
-    // fontFamily:'Nunito-Regular', fonts not loaded yet 
+    fontFamily:'nunito-regular', 
+    // fonts not loaded yet 
     // fontFamily:'Nunito-Bold',
     color: '#767676',
     fontSize: 24,
@@ -73,3 +98,21 @@ const styles = StyleSheet.create({
     width:88,
   },
 });
+
+
+// import HomeScreen from '../screens/Home';
+// import AboutScreen from '../screens/About';
+// import GlossaryScreen from '../screens/Glossary';
+
+// const TabNavigator = createBottomTabNavigator({
+//   Glossary: {
+//     screen: GlossaryScreen
+//   },
+//   Home: {
+//     screen: HomeScreen
+//   },
+//   About: {
+//     screen: AboutScreen
+//   }
+// });
+
